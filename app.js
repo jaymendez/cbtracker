@@ -63,11 +63,11 @@ httpServer.listen(httpPort, () => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  const credentials = {
-    cert: fs.readFileSync('/etc/cert/cert.pem', 'utf8'),
-    key: fs.readFileSync('/etc/cert/key.pem', 'utf8'),
-  };
-  const httpsServer = https.createServer(credentials, app);
+  // const credentials = {
+  //   cert: fs.readFileSync('/etc/cert/cert.pem', 'utf8'),
+  //   key: fs.readFileSync('/etc/cert/key.pem', 'utf8'),
+  // };
+  const httpsServer = https.createServer(app);
   const httpsPort = process.env.HTTPS_PORT || 3001;
   httpsServer.listen(httpsPort, () => {
     console.log(`HTTPS Server running on port ${httpsPort}`);
